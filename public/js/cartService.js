@@ -8,6 +8,11 @@ app.service("cartService", function($http) {
         // GET /api/items
 
         // TODO Make the HTTP request to the server and return a promise.
+        return $http.get('/api/items').then(function(response){
+          var list = response.data;
+          console.log(list);
+          return list;
+        });
     };
 
     // Call the Node Server API to add an item.
@@ -20,7 +25,10 @@ app.service("cartService", function($http) {
         // body -> { product: "...", price: ... }
 
         // TODO Make the HTTP request to the server and return a promise.
-    };
+        return $http.post('/api/items', item).then(function(response){
+          return response;
+        });
+     };
 
     // Call the Node Server API to delete an item.
     // The itemId parameter will be the ID of the item to delete.
@@ -28,8 +36,9 @@ app.service("cartService", function($http) {
     // matter what the value of the promise is.
     this.deleteItem = function(itemId) {
         // DELETE /api/items/{ID}
-
         // TODO Make the HTTP request to the server and return a promise.
-    };
-
+        return $http.delete('/api/items/'+ itemId).then(function(response){
+          return response;
+        });
+     };
 });
