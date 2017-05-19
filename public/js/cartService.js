@@ -9,9 +9,10 @@ app.service("cartService", function($http) {
 
         // TODO Make the HTTP request to the server and return a promise.
         return $http.get('/api/items').then(function(response){
-          var list = response.data;
-          console.log(list);
-          return list;
+           return response.data;
+          // var list =
+          // console.log(list);
+          // return list;
         });
     };
 

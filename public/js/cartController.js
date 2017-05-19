@@ -30,5 +30,18 @@ app.controller("cartController", function($scope, cartService) {
             });
         });
     };
-
+    $scope.total = function () {
+      var total = 0;
+      angular.forEach($scope.items,function (item){
+        total += item.price * item.quantity;
+      });
+      return total;
+    }
+    $scope.totalItems = function () {
+      var total = 0;
+      angular.forEach($scope.items,function (item){
+        total += item.quantity;
+      });
+      return total;
+    }
 });
