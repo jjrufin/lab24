@@ -32,8 +32,8 @@ app.get('/api/items', function(req, res){
 app.post('/api/items', function(req, res) {
  var item = req.body; // <-- Get the parsed JSON body
  var sql = "INSERT INTO shoppingcart(product, price, quantity)" +
- "VALUES ($1::text, $2::real, $3::int)";
- var values = [item.product, item.price, item.quantity, item.total];
+ "VALUES ($1::text, $2::real, $3::integer)";
+ var values = [item.product, item.price, item.quantity];
  pool.query(sql, values).then(function() {
  res.status(201); // 201 Created
  res.send("INSERTED");
